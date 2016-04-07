@@ -8,30 +8,31 @@
  * This example code is in the public domain.
  */
 
-#include <Stepper.h>
+#include <Stepper_28BYJ.h>
 
 // change this to the number of steps on your motor
-#define STEPS 2048
+#define STEPS 4078// количество шагов
 
 // create an instance of the stepper class, specifying
 // the number of steps of the motor and the pins it's
 // attached to
-Stepper stepper(STEPS, 8, 9, 10, 11);
+Stepper_28BYJ stepper(STEPS, 8, 9, 10, 11);
 
 // the previous reading from the analog input
 int previous = 0;
 
 void setup() {
-  // set the speed of the motor to 30 RPMs
+  // установим скорость вращения 3 об/мин
   stepper.setSpeed(10);
 }
 
 void loop() {
   // get the sensor value
   
-  stepper.step(2048);
+  stepper.step(STEPS/2);
   delay(1000); 
- 
+   stepper.step(-STEPS);
+  delay(1000); 
 
 
 }
